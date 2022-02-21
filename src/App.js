@@ -6,7 +6,8 @@ function App() {
   return (
     <>
       <h1>{total}</h1>
-      <button onClick={() => setTotal(total + 1)}>Click Me</button>
+      <button onClick={() => setTotal(total + 1)}>Add</button>
+      <button onClick={() => setTotal(total - 1)}>Minus</button>
     </>
   );
 }
