@@ -1,21 +1,10 @@
-import { data } from './data/student'
-
+import { useState } from 'react'
 function App() {
-  console.log(data);
-
-  const newData = data.map((value, index) => {
-    return <li>{value.name}</li>
-  })
-  // 會是array裡面是react的物件
-  console.log(newData);
+  const [total, setTotal] = useState(0)
   return (
     <>
-      <ul>
-        {/* 用map將資料加上li標籤 */}
-        {data.map((value, index) => {
-          return <li key={index}>{value.name}</li>
-        })}
-      </ul>
+      <h1 onClick={() => setTotal(total + 1)}>{total}</h1>
+      {total > 3 ? <p>數字大於3</p> : <p>數字小於3</p>}
     </>
   )
 }
