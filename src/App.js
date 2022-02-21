@@ -1,12 +1,6 @@
-import Parent from './components/Parent'
-import SocialShare from './components/SocialShare'
+import Menu from './components/Menu'
+import './menu.css'
 function App() {
-  return (
-    <>
-      <Parent />
-      <br />
-      <SocialShare url="http://localhost:3000/" round="true" />
-    </>
-  )
+  return <Menu />
 }
 export default App
