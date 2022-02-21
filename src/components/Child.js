@@ -6,4 +6,10 @@ function Child(props) {
     </>
   )
 }
+
+Child.defaultProps = {
+  name: 'Guest',
+  text: 'Please Log In...',
+}
+
 export default Child
