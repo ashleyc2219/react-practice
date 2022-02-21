@@ -14,7 +14,7 @@ Child.defaultProps = {
 }
 
 // 使用套件，限制傳進來得props資料類型
-Child.PropTypes = {
+Child.propTypes = {
   name: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
 }
