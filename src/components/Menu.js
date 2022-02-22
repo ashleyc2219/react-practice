@@ -9,9 +9,9 @@ function Menu() {
     <>
       <ul>
         {menuItems.map((value, index) => {
-            {/* 被點到的li會觸發onclick將activeIndex設成該item的index */}
           return (
             <li
+              // 被點到的li會觸發onclick將activeIndex設成該item的index
               key={index}
               onClick={() => {
                 setActiveIndex(index)
