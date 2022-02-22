@@ -1,8 +1,30 @@
-import Menu from './components/Menu'
-import Parent from './components/Parent'
-import './menu.css'
-import HW2 from './components/HW2'
+import { useState } from 'react'
+import CartList from './components/CartList'
+import CartSummary from './components/CartSummary'
+//   商品物件 資訊
+const product = [
+  {
+    id: 1,
+    name: '黑色 T-shirt',
+    category: 'Shirt',
+    image: 'https://i.imgur.com/1GrakTl.jpg',
+    price: 300,
+  },
+]
 function App() {
-  return <HW2 />
+  const [count, setCount] = useState(1)
+  return (
+    <>
+      <div className="card">
+        <div className="row">
+          <CartList product={product} count={count} setCount={setCount} />
+          <CartSummary
+            totalCount={count}
+            totalPrice={count * product[0].price}
+          />
+        </div>
+      </div>
+    </>
+  )
 }
 export default App
