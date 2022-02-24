@@ -17,6 +17,7 @@ function FormInput() {
 
     setData(newData)
   }
+
   return (
     <>
       <h2>文字輸入框</h2>
@@ -36,19 +37,33 @@ function FormInput() {
         onChange={handleChange}
       />
       <p>請選擇你最喜愛的羊種:</p>
+
       {favOption.map((v, i) => {
         return (
-          <React.Fragment key={i}>
+          
+          <div key={i}>
             <input
-              type="radio"
-              value={v}
+              type="checkbox"
               id={v}
-              name="fav"
-              checked={v === data.fav}
-              onChange={handleChange}
+              value={v}
+              checked={data['fav'].includes(v)}
+              onChange={(e) => {
+                const isIncluded = data['fav'].includes(v)
+                if (isIncluded) {
+                  const newDataFav = data['fav'].filter((fav)=>{
+                    return fav!==v
+                  })
+                  const newData = { ...data, fav: newDataFav}
+                  setData(newData)
+                }else{
+                  const newData = { ...data, fav: [...data['fav'], v]}
+                  setData(newData)
+                }
+              }}
             />
             <label htmlFor={v}>{v}</label>
-          </React.Fragment>
+          </div>
+          
         )
       })}
     </>
