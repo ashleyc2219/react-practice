@@ -1,3 +1,4 @@
+import { check } from 'prettier'
 import { useState } from 'react'
 
 function Inputs() {
@@ -13,6 +14,18 @@ function Inputs() {
 
   // 下拉選單
   const [selectDog, setSelectDog] = useState('')
+
+  // 勾選方塊 單一
+  const [checkAge, setCheckAge] = useState('')
+  // 勾選方塊Cat
+  const checkList = [
+    '美國短毛貓',
+    '英國短毛貓',
+    '緬因貓',
+    '挪威森林貓',
+    '布偶貓',
+  ]
+  const [checkCat, setCheckCat] = useState([])
   return (
     <>
       <h2>測試input</h2>
@@ -71,7 +84,7 @@ function Inputs() {
       })}
 
       <h3>下拉選單</h3>
-      <label for="dogs">請選擇犬種: </label>
+      <label htmlFor="dogs">請選擇犬種: </label>
       <select
         name="dogs"
         id="dogs"
@@ -87,6 +100,48 @@ function Inputs() {
         <option value={'薩摩耶犬'}>薩摩耶犬</option>
         <option value={'阿拉斯加犬'}>阿拉斯加犬</option>
       </select>
+
+      <h3>勾選方塊 (單一)</h3>
+      <input
+        type={'checkbox'}
+        id="age"
+        onChange={(e) => {
+          setCheckAge(e.target.checked)
+        }}
+      />
+      <label htmlFor="age">我已達到飲酒的合法年齡</label>
+
+      <h3>勾選方塊 (多個)</h3>
+      {checkList.map((value, index) => {
+        return (
+          <div key={index}>
+            <input
+              type={'checkbox'}
+              value={value}
+              id={value}
+              // 用狀態陣列判斷是否要勾選
+              checked={checkCat.includes(value)}
+              onChange={(e) => {
+                //先判斷是否有在狀態陣列中
+                const isIncluded = checkCat.includes(e.target.value)
+                //if 已在陣列中 -> 刪除 (取消勾選)
+                // else 增加到陣列中 (勾選起來)
+                if (isIncluded) {
+                  const newCheckList = checkCat.filter((v, i) => {
+                    return v !== e.target.value
+                  })
+                  setCheckCat(newCheckList)
+                } else {
+                  const newCheckList = [...checkCat, e.target.value]
+                  setCheckCat(newCheckList)
+                }
+                console.log(e.target)
+              }}
+            />
+            <label htmlFor={value}>{value}</label>
+          </div>
+        )
+      })}
     </>
   )
 }
