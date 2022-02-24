@@ -1,9 +1,9 @@
 import logo from './logo.svg'
 import './App.css'
-import Inputs from './components/Inputs'
+import FormValid from './components/FormValid'
 
 function App() {
-  return <Inputs />
+  return <FormValid />
 }
 
 export default App
