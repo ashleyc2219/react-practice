@@ -25,7 +25,7 @@ function Inputs() {
     '挪威森林貓',
     '布偶貓',
   ]
-  const [checkCat, setCheckCat] = useState([])
+  const [checkCat, setCheckCat] = useState('')
   return (
     <>
       <h2>測試input</h2>
