@@ -1,20 +1,20 @@
-import logo from './logo.svg'
-import './App.css'
-import FormValid from './components/FormValid'
-import FormInput from './components/FormInput'
-
-import RefsFrom from './components/RefsFrom'
-import IdForm from './components/IdForm'
+import React, { useState, useEffect } from 'react'
+import FuncComLifeCycle from './components/FuncComLifeCycle'
 
 function App() {
+  const [alive, setAlive] = useState(true)
+
   return (
     <>
-      <h3>Refs Form</h3>
-      <RefsFrom />
-      <RefsFrom />
-      <h3>Id Form</h3>
-      <IdForm />
-      <IdForm />
+      <h3>FuncComLifeCycle</h3>
+      {alive && <FuncComLifeCycle />}
+      <button
+        onClick={() => {
+          setAlive(!alive)
+        }}
+      >
+        {alive ? 'Bye' : 'Appear!'}
+      </button>
     </>
   )
 }
